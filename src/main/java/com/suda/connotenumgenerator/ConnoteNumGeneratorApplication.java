@@ -6,6 +6,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * The main class to call the ConnoteGenerator's generate method.
+ * This is done using Spring Boot with the assumption that there is a high chance this feature can be extended to be used
+ * with a REST API to generate next connote number. Also it is possible to implement CSV based loading of input or any similar input methodologies.
+ */
 @SpringBootApplication
 public class ConnoteNumGeneratorApplication implements CommandLineRunner {
 
@@ -32,7 +37,7 @@ public class ConnoteNumGeneratorApplication implements CommandLineRunner {
 			ConnoteGenerator connoteGenerator = new ConnoteGenerator();
 			final String connoteNumber = connoteGenerator.generate(new CarrierAccount(prefix, accountNumber, indexDigits, lastUsedIndex, rangeStart, rangeEnd));
 
-			System.out.println("The next Consignment Number is: " + connoteNumber);
+			System.out.printf("The next Consignment Note Number is: \n%s", connoteNumber);
 		} catch (NumberFormatException e) {
 			System.out.println("Please pass proper numbers for last 4 parameters: " + e);
 		}
