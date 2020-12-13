@@ -30,7 +30,9 @@ public class ConnoteNumGeneratorApplication implements CommandLineRunner {
 			final var rangeEnd = Integer.parseInt(args[5]);
 
 			ConnoteGenerator connoteGenerator = new ConnoteGenerator();
-			connoteGenerator.generate(new CarrierAccount(prefix, accountNumber, indexDigits, lastUsedIndex, rangeStart, rangeEnd));
+			final String connoteNumber = connoteGenerator.generate(new CarrierAccount(prefix, accountNumber, indexDigits, lastUsedIndex, rangeStart, rangeEnd));
+
+			System.out.println("The next Consignment Number is: " + connoteNumber);
 		} catch (NumberFormatException e) {
 			System.out.println("Please pass proper numbers for last 4 parameters: " + e);
 		}
